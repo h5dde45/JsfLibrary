@@ -3,25 +3,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      >
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="style_main.css"  />
     </h:head>
     <h:body>
-        
-        <ui:composition template="/templates/library_template.xhtml">
+        <ui:composition>
 
-            <ui:define name="title">
-                #{msg.book_list}
-            </ui:define>
+            <h4>#{msg.genres}</h4>
 
-            <ui:define name="content">
-                тестовый контент
-            </ui:define>
 
+                <h:dataTable value="#{genres.genreList}" var="g">
+
+                    <h:column>
+                        #{g.name}
+                    </h:column>
+
+                </h:dataTable>
+                
+                
         </ui:composition>
-        
-        
     </h:body>
 </html>
 
