@@ -280,3 +280,17 @@ a:hover, a:active, a:focus {
     margin:3px;
 }
 
+
+.pager a{
+    margin-left: 5px;
+    margin-top: 50px;
+}
+
+.pager{
+    margin-left: 15px;
+    width: 100%;
+    float:left;
+}
+.pager .selected_page{
+    color:red;
+}

@@ -3,6 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
     <title>Facelet Title</title>
@@ -13,7 +14,7 @@
             ${msg.book_list}
         </ui:define>
         <ui:define name="content">
-            <p><strong>${msg.book_count} ${searchController.currentBookList.size()}</strong></p>
+            <p><strong>${msg.book_count} ${searchController.totalBooksCount}</strong></p>
             <h:dataTable value="${searchController.currentBookList}" var="b" cellspacing="10px"
                          columnClasses="col1, col2, col3">
                 <h:column>
@@ -21,7 +22,11 @@
                 </h:column>
                 <h:column>
                     <div>
-                        <p><a href="#">${b.name}</a></p>
+                        <p>
+                            <h:outputLink value="#{request.contextPath}/PdfContent?id=#{b.id}">
+                        ${b.name}
+                        </h:outputLink>
+                        </p>
                         <p><strong>${msg.author_name}: </strong>${b.author}</p>
                         <p><strong>${msg.page_count}:</strong> ${b.pageCount} ${msg.pages}</p>
                         <p><strong>${msg.publisher}</strong> ${b.publisher}</p>
@@ -36,6 +41,20 @@
                     </div>
                 </h:column>
             </h:dataTable>
+
+            <div class="pager">
+                <h:form rendered="#{searchController.totalBooksCount>searchController.booksOnPage}">
+                    #{msg.pager}
+
+                    <ui:repeat value="#{searchController.pageNumbers}" var="pageNumber" >
+                        <h:commandLink value="#{pageNumber}" action="#{searchController.selectPage()}"
+                                       styleClass="#{pageNumber == searchController.selectedPageNumber ? 'selected_page':''}">
+                            <f:param name="page_number" value="#{pageNumber}" />
+                        </h:commandLink>
+                    </ui:repeat>
+                </h:form>
+            </div>
+
         </ui:define>
     </ui:composition>
 </h:body>
