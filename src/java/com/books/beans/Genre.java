@@ -1,9 +1,9 @@
-package com.web.beans;
+package com.books.beans;
 
 public class Genre{
-    
-    private String name;
+
     private long id;
+    private String name;
 
     public Genre() {
     }

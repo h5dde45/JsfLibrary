@@ -1,4 +1,4 @@
-package com.web.validators;
+package com.books.validators;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -13,7 +13,7 @@ public class LoginValidator implements Validator{
     @Override
     public void validate(FacesContext facesContext, UIComponent uiComponent, Object o) throws ValidatorException {
         if(o.toString().length()<5){
-            ResourceBundle bundle=ResourceBundle.getBundle("com.web.locales.messages",
+            ResourceBundle bundle=ResourceBundle.getBundle("com.books.locales.messages",
                     FacesContext.getCurrentInstance().getViewRoot().getLocale());
             FacesMessage message=new FacesMessage(bundle.getString("login_length_error"));
             message.setSeverity(FacesMessage.SEVERITY_ERROR);

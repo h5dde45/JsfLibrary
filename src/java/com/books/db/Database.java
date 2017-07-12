@@ -1,4 +1,4 @@
-package com.web.db;
+package com.books.db;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;

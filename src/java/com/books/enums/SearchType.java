@@ -1,4 +1,4 @@
-package com.web.enums;
+package com.books.enums;
 
 public enum SearchType {
 
